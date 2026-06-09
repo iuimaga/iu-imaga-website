@@ -1,0 +1,535 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family: Georgia, serif;
+    line-height:1.7;
+    color:#222;
+    background:#ffffff;
+}
+
+/* Navigation */
+
+nav{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:25px 8%;
+    background:white;
+    border-bottom:1px solid #e5e5e5;
+}
+
+.logo{
+    font-size:1.3rem;
+    font-weight:bold;
+    color:#002147;
+}
+
+nav ul{
+    display:flex;
+    list-style:none;
+    gap:25px;
+}
+
+nav a{
+    text-decoration:none;
+    color:#002147;
+    font-weight:500;
+}
+
+/* Hero */
+
+.hero{
+    min-height:85vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    padding:40px;
+}
+
+.hero-content{
+    max-width:800px;
+}
+
+.hero h1{
+    font-size:4rem;
+    color:#002147;
+    margin-bottom:15px;
+}
+
+.tagline{
+    font-size:1.2rem;
+    margin-bottom:20px;
+}
+
+.intro{
+    font-size:1.1rem;
+    margin-bottom:35px;
+}
+
+.buttons{
+    display:flex;
+    justify-content:center;
+    gap:15px;
+}
+
+.btn-primary{
+    background:#002147;
+    color:white;
+    padding:12px 25px;
+    text-decoration:none;
+    border-radius:5px;
+}
+
+.btn-secondary{
+    border:2px solid #002147;
+    color:#002147;
+    padding:12px 25px;
+    text-decoration:none;
+    border-radius:5px;
+}
+
+/* Sections */
+
+.section{
+    padding:80px 10%;
+    max-width:1000px;
+    margin:auto;
+}
+
+.section h2{
+    color:#002147;
+    margin-bottom:20px;
+    font-size:2rem;
+}
+
+.section p{
+    font-size:1.1rem;
+}
+
+/* Footer */
+
+footer{
+    background:#002147;
+    color:white;
+    text-align:center;
+    padding:50px 20px;
+}
+
+footer p{
+    margin-bottom:10px;
+}
+
+/* Mobile */
+
+@media(max-width:768px){
+
+    nav{
+        flex-direction:column;
+        gap:20px;
+    }
+
+    nav ul{
+        flex-wrap:wrap;
+        justify-content:center;
+    }
+
+    .hero h1{
+        font-size:2.5rem;
+    }
+
+    .buttons{
+        flex-direction:column;
+    }
+
+}
+.hero{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    min-height:90vh;
+    padding:80px 10%;
+    gap:60px;
+}
+
+.hero-text{
+    flex:1;
+}
+
+.hero-label{
+    color:#c8a951;
+    font-weight:bold;
+    letter-spacing:2px;
+    margin-bottom:15px;
+}
+
+.hero h1{
+    font-size:4rem;
+    color:#002147;
+    margin-bottom:20px;
+}
+
+.hero-image{
+    flex:1;
+    display:flex;
+    justify-content:center;
+}
+
+.hero-image img{
+    width:380px;
+    height:380px;
+    object-fit:cover;
+    border-radius:20px;
+    box-shadow:0 15px 40px rgba(0,0,0,0.15);
+}
+
+@media(max-width:900px){
+
+    .hero{
+        flex-direction:column-reverse;
+        text-align:center;
+    }
+
+    .hero-image img{
+        width:280px;
+        height:280px;
+    }
+
+}
+.identity-section{
+    padding:100px 10%;
+    background:#f8f9fb;
+}
+
+.identity-section h2{
+    text-align:center;
+    color:#002147;
+    margin-bottom:50px;
+    font-size:2.5rem;
+}
+
+.identity-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:25px;
+}
+
+.identity-card{
+    background:white;
+    padding:30px;
+    border-radius:15px;
+    box-shadow:0 10px 30px rgba(0,0,0,0.08);
+    transition:0.3s;
+}
+
+.identity-card:hover{
+    transform:translateY(-5px);
+}
+
+.identity-card h3{
+    color:#002147;
+    margin-bottom:15px;
+}
+.ventures-section{
+    padding:100px 10%;
+}
+
+.ventures-section h2{
+    text-align:center;
+    color:#002147;
+    margin-bottom:50px;
+    font-size:2.5rem;
+}
+
+.venture-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:25px;
+}
+
+.venture-card{
+    border-left:5px solid #c8a951;
+    background:white;
+    padding:30px;
+    box-shadow:0 10px 25px rgba(0,0,0,0.08);
+    border-radius:10px;
+}
+
+.venture-card h3{
+    color:#002147;
+    margin-bottom:15px;
+}
+.vision-section{
+    background:#002147;
+    color:white;
+    padding:120px 10%;
+    text-align:center;
+}
+
+.vision-container{
+    max-width:900px;
+    margin:auto;
+}
+
+.vision-section h2{
+    font-size:3rem;
+    margin-bottom:30px;
+}
+
+.vision-section p{
+    font-size:1.15rem;
+    margin-bottom:20px;
+    line-height:1.9;
+}
+.nhf-feature{
+    padding:100px 10%;
+    text-align:center;
+}
+
+.nhf-feature h2{
+    color:#002147;
+    margin-bottom:20px;
+}
+
+.nhf-feature p{
+    margin-bottom:30px;
+}
+.page-hero{
+    background:#002147;
+    color:white;
+    text-align:center;
+    padding:120px 10%;
+}
+
+.page-hero h1{
+    font-size:3.5rem;
+    margin-bottom:20px;
+}
+
+.content-section{
+    max-width:900px;
+    margin:auto;
+    padding:70px 10%;
+}
+
+.content-section h2{
+    color:#002147;
+    margin-bottom:20px;
+}
+
+.content-section p{
+    margin-bottom:20px;
+    line-height:1.9;
+}
+
+.philosophy-section{
+    background:#f8f9fb;
+    text-align:center;
+    padding:100px 10%;
+}
+
+.philosophy-section h2{
+    color:#002147;
+    margin-bottom:30px;
+}
+
+.philosophy-section blockquote{
+    font-size:1.5rem;
+    font-style:italic;
+    max-width:800px;
+    margin:auto;
+    color:#333;
+}
+.venture-showcase{
+    padding:80px 10%;
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+    gap:30px;
+}
+
+.venture-item{
+    background:white;
+    padding:30px;
+    border-radius:15px;
+    box-shadow:0 10px 30px rgba(0,0,0,0.08);
+    text-align:center;
+}
+
+.venture-item img{
+    width:140px;
+    height:140px;
+    object-fit:contain;
+    margin-bottom:20px;
+}
+
+.venture-item h2{
+    color:#002147;
+    margin-bottom:15px;
+}
+.writing-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:25px;
+    padding:20px 10% 80px;
+}
+
+.writing-card{
+    background:white;
+    padding:30px;
+    border-radius:15px;
+    box-shadow:0 10px 30px rgba(0,0,0,0.08);
+}
+
+.writing-card h3{
+    color:#002147;
+    margin-bottom:15px;
+}
+
+.blog-section{
+    text-align:center;
+    padding:100px 10%;
+    background:#f8f9fb;
+}
+
+.blog-section h2{
+    color:#002147;
+    margin-bottom:20px;
+}
+
+.blog-section p{
+    margin-bottom:30px;
+}
+.nhf-logo-section{
+    text-align:center;
+    padding:60px 10%;
+}
+
+.nhf-logo-section img{
+    width:180px;
+}
+
+.gallery-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:20px;
+    margin-top:30px;
+}
+
+.gallery-grid img{
+    width:100%;
+    height:250px;
+    object-fit:cover;
+    border-radius:12px;
+    box-shadow:0 8px 20px rgba(0,0,0,0.1);
+}
+.contact-section{
+    padding:80px 10%;
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(350px,1fr));
+    gap:30px;
+}
+
+.contact-card{
+    background:white;
+    padding:30px;
+    border-radius:15px;
+    box-shadow:0 10px 30px rgba(0,0,0,0.08);
+}
+
+.contact-card h2{
+    color:#002147;
+    margin-bottom:20px;
+}
+
+.contact-card ul{
+    padding-left:20px;
+}
+
+.contact-card li{
+    margin-bottom:10px;
+}
+
+.contact-form-section{
+    padding:80px 10%;
+}
+
+.contact-form-section h2{
+    color:#002147;
+    margin-bottom:30px;
+}
+
+.contact-form-section form{
+    display:flex;
+    flex-direction:column;
+    gap:15px;
+}
+
+.contact-form-section input,
+.contact-form-section textarea{
+    padding:15px;
+    border:1px solid #ddd;
+    border-radius:10px;
+    font-size:16px;
+}
+
+.contact-form-section button{
+    background:#002147;
+    color:white;
+    border:none;
+    padding:15px;
+    border-radius:10px;
+    cursor:pointer;
+    font-size:16px;
+}
+
+.contact-form-section button:hover{
+    opacity:0.9;
+}
+.quick-links{
+    padding:100px 10%;
+    text-align:center;
+    background:#f8f9fb;
+}
+
+.quick-links h2{
+    color:#002147;
+    margin-bottom:40px;
+}
+
+.quick-links-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:20px;
+}
+
+.quick-links-grid a{
+    background:white;
+    padding:20px;
+    text-decoration:none;
+    color:#002147;
+    border-radius:12px;
+    box-shadow:0 8px 20px rgba(0,0,0,0.08);
+    font-weight:bold;
+}
+.publication-card{
+    background:white;
+    padding:25px;
+    border-radius:15px;
+    box-shadow:0 8px 20px rgba(0,0,0,0.08);
+    margin-top:20px;
+}
+
+.publication-card h3{
+    color:#002147;
+    margin-bottom:10px;
+}
+
+.journal-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:25px;
+}
