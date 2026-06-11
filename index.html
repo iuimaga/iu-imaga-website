@@ -7,8 +7,8 @@
 <link rel="icon" type="image/png" href="images/isaiah-logo1.png">
 <link rel="stylesheet" href="style.css">
 <style>
-  /* Reset spacing between sections */
-  .content-section, .identity-section, .rotating-quote, .newsletter-bar, .quick-links {
+  /* Reset all spacing */
+  .content-section, .rotating-quote, .newsletter-bar, .quick-links {
     margin: 0 !important;
   }
   .stats-container {
@@ -48,7 +48,7 @@
     background: #002147;
     color: white;
     text-align: center;
-    padding: 1rem 2rem !important;   /* minimal padding */
+    padding: 1rem 2rem !important;
     margin: 0 !important;
   }
   .quote-text {
@@ -63,17 +63,9 @@
     font-size: 1rem;
     color: #c8a951;
   }
-  .identity-section {
-    padding: 20px 8% !important;
-    margin: 0 !important;
-  }
-  .content-section {
-    padding: 30px 8% !important;
-    margin: 0 !important;
-  }
   .featured-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 30px;
     margin-top: 30px;
   }
@@ -83,17 +75,22 @@
     overflow: hidden;
     box-shadow: 0 10px 25px rgba(0,0,0,0.05);
     transition: transform 0.3s;
+    display: flex;
+    flex-direction: column;
   }
   .feature-card:hover {
     transform: translateY(-5px);
   }
   .feature-card img {
     width: 100%;
-    height: 220px;
-    object-fit: cover;
+    height: auto;          /* original height */
+    object-fit: contain;   /* show full image */
+    background: #f8f8f8;
+    padding: 20px;
   }
   .feature-content {
     padding: 25px;
+    flex: 1;
   }
   .feature-content h3 {
     color: #002147;
@@ -163,15 +160,10 @@
     transform: translateY(-3px);
     background: #d4b35c;
   }
-  /* Remove any gap after the rotating quote */
-  .rotating-quote + .identity-section {
-    margin-top: 0 !important;
-    padding-top: 0 !important;
-  }
-  /* Pull up the Featured Work section tightly after What I Do */
-  .identity-section + .content-section {
-    margin-top: -15px !important;
-    padding-top: 0 !important;
+  /* Remove any gap after rotating quote */
+  .rotating-quote + .content-section {
+    margin-top: -5px !important;
+    padding-top: 10px !important;
   }
   @media (max-width: 768px) {
     .quote-text { font-size: 1.3rem; }
@@ -247,22 +239,11 @@
 <section class="rotating-quote">
 <div id="quote-container">
 <div class="quote-text" id="quote-text">"I believe meaningful change happens when knowledge, service, and enterprise work together."</div>
-<div class="quote-author">— IU Imaga</div>   <!-- Fixed typo -->
+<div class="quote-author">— IU Imaga</div>
 </div>
 </section>
 
-<!-- What I Do -->
-<section class="identity-section fade-section">
-<h2>What I Do</h2>
-<div class="identity-grid">
-<div class="identity-card"><h3>The Scientist</h3><p>Medical Laboratory Scientist and Public Health Professional focused on diagnostics, epidemiology, research, and health systems strengthening.</p></div>
-<div class="identity-card"><h3>The Writer</h3><p>Author, poet, storyteller, and creator of A Writer's Lab.</p></div>
-<div class="identity-card"><h3>The Builder</h3><p>Building ventures, institutions, and ideas designed for lasting impact.</p></div>
-<div class="identity-card"><h3>The Community Advocate</h3><p>Working through public health, leadership, and development initiatives to improve lives.</p></div>
-</div>
-</section>
-
-<!-- Featured Work -->
+<!-- Featured Work (directly after quote, no What I Do) -->
 <section class="content-section" style="padding-top: 10px !important;">
 <h2 style="text-align:center;">Featured Work</h2>
 <div class="featured-grid">
@@ -292,7 +273,7 @@
 </div>
 </section>
 
-<!-- Newsletter -->
+<!-- Newsletter Bar -->
 <section class="newsletter-bar">
 <h3>Stay Inspired</h3>
 <p>Join my mailing list for updates on new books, public health insights, and creative reflections.</p>
@@ -331,7 +312,7 @@
 
 <script src="script.js"></script>
 <script>
-  // Counter animation with plus sign
+  // Counter animation
   const counters = document.querySelectorAll('.stat-number');
   let started = false;
   function startCounters() {
