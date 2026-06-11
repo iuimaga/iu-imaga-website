@@ -1,54 +1,103 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>IU Imaga | Official Website</title>
-
+<title>IU Imaga | Scientist, Writer, Builder</title>
 <link rel="icon" type="image/png" href="images/isaiah-logo1.png">
 <link rel="stylesheet" href="style.css">
-
+<!-- Leaflet CSS for map -->
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+<style>
+  /* Additional inline styles for counter, map, rotating quote */
+  .stats-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+    margin: 3rem 0;
+  }
+  .stat-box {
+    background: #f7f8fb;
+    padding: 2rem;
+    border-radius: 20px;
+    text-align: center;
+    min-width: 180px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+    transition: transform 0.3s;
+  }
+  .stat-box:hover { transform: translateY(-8px); }
+  .stat-number {
+    font-size: 3rem;
+    font-weight: bold;
+    color: #c8a951;
+    line-height: 1.2;
+  }
+  .stat-label {
+    font-size: 1rem;
+    color: #002147;
+    margin-top: 0.5rem;
+  }
+  .rotating-quote {
+    background: #002147;
+    color: white;
+    text-align: center;
+    padding: 4rem 2rem;
+    margin: 2rem 0;
+  }
+  .quote-text {
+    font-size: 1.8rem;
+    font-style: italic;
+    max-width: 800px;
+    margin: 0 auto 1rem;
+    line-height: 1.4;
+  }
+  .quote-author {
+    font-size: 1rem;
+    color: #c8a951;
+  }
+  .map-container {
+    margin: 3rem 0;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  }
+  #simple-map {
+    height: 350px;
+    width: 100%;
+  }
+  @media (max-width: 768px) {
+    .quote-text { font-size: 1.2rem; }
+    .stat-box { padding: 1rem; min-width: 140px; }
+    .stat-number { font-size: 2rem; }
+  }
+</style>
 </head>
-
 <body>
 
-<!-- =========================
-     NAVIGATION
-========================= -->
-
+<!-- Navigation (unchanged from your original) -->
 <nav>
-
 <div class="logo">
-    <img src="images/isaiah-logo1.png" alt="IU Logo" class="logo-icon">
-    <img src="images/isaiah-logo2.png" alt="IU Imaga" class="logo-wordmark">
+<img src="images/isaiah-logo1.png" alt="IU Logo" class="logo-icon">
+<img src="images/isaiah-logo2.png" alt="IU Imaga" class="logo-wordmark">
 </div>
-
 <div class="menu-toggle">&#9776;</div>
-
 <ul>
-    <li><a href="index.html">Home</a></li>
-    <li><a href="pages/about.html">About</a></li>
-    <li><a href="pages/nhf.html">NHF</a></li>
-    <li><a href="pages/writing.html">Writing</a></li>
-    <li><a href="pages/books.html">Books</a></li>
-    <li><a href="pages/research.html">Research</a></li>   <!-- Updated from Publications -->
-    <li><a href="pages/impact.html">Impact</a></li>
-    <li><a href="pages/ventures.html">Ventures</a></li>
-    <li><a href="pages/gallery.html">Gallery</a></li>
-    <li><a href="pages/contact.html">Contact</a></li>
+<li><a href="index.html">Home</a></li>
+<li><a href="pages/about.html">About</a></li>
+<li><a href="pages/nhf.html">NHF</a></li>
+<li><a href="pages/writing.html">Writing</a></li>
+<li><a href="pages/books.html">Books</a></li>
+<li><a href="pages/research.html">Research</a></li>
+<li><a href="pages/impact.html">Impact</a></li>
+<li><a href="pages/ventures.html">Ventures</a></li>
+<li><a href="pages/gallery.html">Gallery</a></li>
+<li><a href="pages/contact.html">Contact</a></li>
 </ul>
-
 </nav>
 
-<!-- =========================
-     HERO SECTION
-========================= -->
-
+<!-- Hero Slideshow (your existing) -->
 <section class="hero">
-
 <div class="hero-slide active" style="background-image:url('images/isaiah.png');"></div>
 <div class="hero-slide" style="background-image:url('images/isaiah2.png');"></div>
 <div class="hero-slide" style="background-image:url('images/isaiah4.png');"></div>
@@ -61,122 +110,147 @@
 <div class="hero-slide" style="background-image:url('images/isaiah13.png');"></div>
 <div class="hero-slide" style="background-image:url('images/isaiah14.png');"></div>
 <div class="hero-slide" style="background-image:url('images/isaiah15.png');"></div>
-
 <div class="hero-overlay"></div>
-
 <div class="hero-content">
-    <p class="hero-label">PERSONAL WEBSITE</p>
-    <h1>IU Imaga</h1>
-    <p class="tagline">Building businesses, telling stories, and creating impact.</p>
-    <p class="intro">Medical Laboratory Scientist • Public Health Professional • Writer • Community Builder</p>
-    <div class="buttons">
-        <a href="pages/about.html" class="btn-primary">My Story</a>
-        <a href="pages/contact.html" class="btn-secondary">Get In Touch</a>
-    </div>
+<p class="hero-label">PERSONAL WEBSITE</p>
+<h1>IU Imaga</h1>
+<p class="tagline">Building businesses, telling stories, and creating impact.</p>
+<p class="intro">Medical Laboratory Scientist • Public Health Professional • Writer • Community Builder</p>
+<div class="buttons">
+<a href="pages/about.html" class="btn-primary">My Story</a>
+<a href="pages/contact.html" class="btn-secondary">Get In Touch</a>
 </div>
-
+</div>
 </section>
 
-<!-- =========================
-     WHAT I DO
-========================= -->
+<!-- NEW: Stats with counter animation -->
+<section class="content-section" style="padding-top: 40px !important;">
+<h2 style="text-align:center;">Impact Snapshot</h2>
+<div class="stats-container">
+<div class="stat-box"><div class="stat-number" data-target="40">0</div><div class="stat-label">Community Outreaches</div></div>
+<div class="stat-box"><div class="stat-number" data-target="800">0</div><div class="stat-label">People Reached</div></div>
+<div class="stat-box"><div class="stat-number" data-target="5">0</div><div class="stat-label">Active Ventures</div></div>
+<div class="stat-box"><div class="stat-number" data-target="4">0</div><div class="stat-label">Years of Experience</div></div>
+</div>
+</section>
 
+<!-- Rotating Quotes Section -->
+<section class="rotating-quote">
+<div id="quote-container">
+<div class="quote-text" id="quote-text">"I believe meaningful change happens when knowledge, service, and enterprise work together."</div>
+<div class="quote-author">— IU Imaga</div>
+</div>
+</section>
+
+<!-- What I Do (original identity cards) -->
 <section class="identity-section fade-section">
-    <h2>What I Do</h2>
-    <div class="identity-grid">
-        <div class="identity-card">
-            <h3>The Scientist</h3>
-            <p>Medical Laboratory Scientist and Public Health Professional focused on diagnostics, epidemiology, research, and health systems strengthening.</p>
-        </div>
-        <div class="identity-card">
-            <h3>The Writer</h3>
-            <p>Author, poet, storyteller, and creator of A Writer's Lab.</p>
-        </div>
-        <div class="identity-card">
-            <h3>The Builder</h3>
-            <p>Building ventures, institutions, and ideas designed for lasting impact.</p>
-        </div>
-        <div class="identity-card">
-            <h3>The Community Advocate</h3>
-            <p>Working through public health, leadership, and development initiatives to improve lives.</p>
-        </div>
-    </div>
+<h2>What I Do</h2>
+<div class="identity-grid">
+<div class="identity-card"><h3>The Scientist</h3><p>Medical Laboratory Scientist and Public Health Professional focused on diagnostics, epidemiology, research, and health systems strengthening.</p></div>
+<div class="identity-card"><h3>The Writer</h3><p>Author, poet, storyteller, and creator of A Writer's Lab.</p></div>
+<div class="identity-card"><h3>The Builder</h3><p>Building ventures, institutions, and ideas designed for lasting impact.</p></div>
+<div class="identity-card"><h3>The Community Advocate</h3><p>Working through public health, leadership, and development initiatives to improve lives.</p></div>
+</div>
 </section>
 
-<!-- =========================
-     ABOUT
-========================= -->
-
-<section class="section fade-section">
-    <h2>About Me</h2>
-    <p>I am Isaiah U. Imaga, professionally known as IU Imaga. My work sits at the intersection of science, leadership, writing, entrepreneurship, and community development.</p>
-    <a href="pages/about.html" class="btn-primary">Read More</a>
+<!-- Map Effect (Leaflet) -->
+<section class="content-section">
+<h2 style="text-align:center;">Where I Serve</h2>
+<div class="map-container"><div id="simple-map"></div></div>
+<p style="text-align:center; margin-top:1rem;">Based in Nigeria, working globally for better health systems and communities.</p>
 </section>
 
-<!-- =========================
-     WRITING
-========================= -->
-
-<section class="section fade-section">
-    <h2>A Writer's Lab</h2>
-    <p>A literary home dedicated to poetry, stories, reflections, and meaningful conversations.</p>
-    <br>
-    <a href="https://awriterslab.blogspot.com" target="_blank" rel="noopener noreferrer" class="btn-primary">Visit A Writer's Lab</a>
-</section>
-
-<!-- =========================
-     IMPACT
-========================= -->
-
-<section class="section fade-section">
-    <h2>Impact</h2>
-    <p>From public health advocacy to community development, my work is driven by the belief that meaningful impact changes lives.</p>
-    <a href="pages/impact.html" class="btn-primary">View Impact</a>
-</section>
-
-<!-- =========================
-     VENTURES
-========================= -->
-
-<section class="section fade-section">
-    <h2>Ventures</h2>
-    <p>Building brands, businesses, and institutions focused on innovation, service, and long-term value.</p>
-    <a href="pages/ventures.html" class="btn-primary">Explore Ventures</a>
-</section>
-
-<!-- =========================
-     QUICK LINKS
-========================= -->
-
+<!-- Quick Links (like reference site) -->
 <section class="quick-links fade-section">
-    <h2>Explore</h2>
-    <div class="quick-links-grid">
-        <a href="pages/about.html">About</a>
-        <a href="pages/nhf.html">National Health Fellowship</a>
-        <a href="pages/writing.html">Writing</a>
-        <a href="pages/research.html">Research</a>      <!-- Updated from Publications -->
-        <a href="pages/impact.html">Impact</a>
-        <a href="pages/ventures.html">Ventures</a>
-        <a href="pages/gallery.html">Gallery</a>
-        <a href="pages/contact.html">Contact</a>
-    </div>
+<h2>Explore More</h2>
+<div class="quick-links-grid">
+<a href="pages/about.html">About</a>
+<a href="pages/nhf.html">National Health Fellowship</a>
+<a href="pages/writing.html">Writing</a>
+<a href="pages/research.html">Research</a>
+<a href="pages/impact.html">Impact</a>
+<a href="pages/ventures.html">Ventures</a>
+<a href="pages/gallery.html">Gallery</a>
+<a href="pages/contact.html">Contact</a>
+</div>
 </section>
 
-<!-- =========================
-     FOOTER
-========================= -->
-
+<!-- Footer (your original) -->
 <footer>
-    <div class="footer-content">
-        <h3>IU IMAGA</h3>
-        <p>Medical Laboratory Scientist • Public Health Professional • Writer • Community Builder</p>
-        <p>Science teaches me to seek truth. Writing teaches me to seek meaning. Service teaches me to seek people.</p>
-        <p>© 2026 IU Imaga. All Rights Reserved.</p>
-        <p class="footer-credit">Designed & Developed by 73 Creations</p>
-    </div>
+<div class="footer-content">
+<h3>IU IMAGA</h3>
+<p>Medical Laboratory Scientist • Public Health Professional • Writer • Community Builder</p>
+<p>Science teaches me to seek truth. Writing teaches me to seek meaning. Service teaches me to seek people.</p>
+<p>© 2026 IU Imaga. All Rights Reserved.</p>
+<p class="footer-credit">Designed & Developed by 73 Creations</p>
+</div>
 </footer>
 
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script src="script.js"></script>
+<script>
+  // Counter animation
+  const counters = document.querySelectorAll('.stat-number');
+  let started = false;
+  function startCounters() {
+    if (started) return;
+    started = true;
+    counters.forEach(counter => {
+      const target = parseInt(counter.getAttribute('data-target'));
+      let current = 0;
+      const increment = target / 80;
+      const updateCount = () => {
+        if (current < target) {
+          current += increment;
+          counter.innerText = Math.ceil(current);
+          requestAnimationFrame(updateCount);
+        } else {
+          counter.innerText = target;
+        }
+      };
+      updateCount();
+    });
+  }
+  // Intersection Observer for counters
+  const statsSection = document.querySelector('.stats-container');
+  if (statsSection) {
+    const observer = new IntersectionObserver((entries) => {
+      if (entries[0].isIntersecting) startCounters();
+    }, { threshold: 0.3 });
+    observer.observe(statsSection);
+  }
 
+  // Rotating quotes (3 quotes)
+  const quotes = [
+    { text: "I believe meaningful change happens when knowledge, service, and enterprise work together.", author: "IU Imaga" },
+    { text: "Science teaches me to seek truth. Writing teaches me to seek meaning. Service teaches me to seek people.", author: "IU Imaga" },
+    { text: "Empathy and systems thinking must go hand in hand in public health.", author: "IU Imaga" },
+    { text: "Strong institutions outlive individuals. Build what will continue creating value long after you are gone.", author: "IU Imaga" }
+  ];
+  let quoteIndex = 0;
+  function rotateQuote() {
+    const quoteEl = document.getElementById('quote-text');
+    const authorEl = document.querySelector('.quote-author');
+    if (quoteEl && authorEl) {
+      quoteIndex = (quoteIndex + 1) % quotes.length;
+      quoteEl.style.opacity = '0';
+      setTimeout(() => {
+        quoteEl.innerText = quotes[quoteIndex].text;
+        authorEl.innerText = '— ' + quotes[quoteIndex].author;
+        quoteEl.style.opacity = '1';
+      }, 300);
+    }
+  }
+  setInterval(rotateQuote, 6000);
+
+  // Leaflet map (simple, no API key required)
+  const map = L.map('simple-map').setView([9.0820, 8.6753], 6); // Center Nigeria
+  L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OSM</a> & CartoDB',
+    subdomains: 'abcd',
+    maxZoom: 19
+  }).addTo(map);
+  L.marker([9.0820, 8.6753]).addTo(map).bindPopup('🇳🇬 IU Imaga - Nigeria').openPopup();
+</script>
 </body>
 </html>
