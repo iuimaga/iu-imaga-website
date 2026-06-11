@@ -45,14 +45,14 @@
     background: #002147;
     color: white;
     text-align: center;
-    padding: 2.5rem 2rem;
-    margin: 0 0 0 0; /* removed top/bottom margins */
+    padding: 1.5rem 2rem; /* reduced from 2.5rem */
+    margin: 0 !important;
   }
   .quote-text {
     font-size: 1.8rem;
     font-style: italic;
     max-width: 800px;
-    margin: 0 auto 1rem;
+    margin: 0 auto 0.5rem;
     line-height: 1.4;
     transition: opacity 0.4s ease;
   }
@@ -61,18 +61,18 @@
     color: #c8a951;
   }
   .identity-section {
-    padding-top: 40px !important; /* reduced from 60px */
-    margin-top: 0 !important;
+    padding: 20px 8% !important; /* drastically reduced top/bottom */
+    margin: 0 !important;
   }
   .content-section {
-    padding-top: 60px;
-    padding-bottom: 60px;
+    padding: 30px 8% !important; /* reduced */
+    margin: 0 !important;
   }
   .featured-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 30px;
-    margin-top: 40px;
+    margin-top: 30px;
   }
   .feature-card {
     background: white;
@@ -114,9 +114,9 @@
   /* Newsletter bar */
   .newsletter-bar {
     background: linear-gradient(135deg, #00152d 0%, #002147 100%);
-    padding: 3rem 2rem;
+    padding: 2.5rem 2rem;
     text-align: center;
-    margin: 1rem 0;
+    margin: 0 0 1rem 0;
   }
   .newsletter-bar h3 {
     color: #c8a951;
@@ -161,6 +161,10 @@
     transform: translateY(-3px);
     background: #d4b35c;
   }
+  /* Override any external margins/paddings that cause gaps */
+  .hero + * { margin-top: 0; }
+  .rotating-quote + .identity-section { margin-top: 0; }
+  .identity-section + .content-section { margin-top: -10px; } /* pull up Featured Work slightly */
   @media (max-width: 768px) {
     .quote-text { font-size: 1.3rem; }
     .stat-box { padding: 1.2rem; min-width: 140px; }
@@ -172,7 +176,7 @@
 </head>
 <body>
 
-<!-- Navigation (unchanged) -->
+<!-- Navigation -->
 <nav>
 <div class="logo">
 <img src="images/isaiah-logo1.png" alt="IU Logo" class="logo-icon">
@@ -220,7 +224,7 @@
 </div>
 </section>
 
-<!-- Stats with plus signs -->
+<!-- Stats -->
 <section class="content-section" style="padding-top: 30px !important; padding-bottom: 20px !important;">
 <h2 style="text-align:center;">Impact Snapshot</h2>
 <div class="stats-container">
@@ -231,7 +235,7 @@
 </div>
 </section>
 
-<!-- Rotating Quotes (reduced padding/margin) -->
+<!-- Rotating Quotes (minimal padding) -->
 <section class="rotating-quote">
 <div id="quote-container">
 <div class="quote-text" id="quote-text">"I believe meaningful change happens when knowledge, service, and enterprise work together."</div>
@@ -239,7 +243,7 @@
 </div>
 </section>
 
-<!-- What I Do (tightened top padding) -->
+<!-- What I Do (tight spacing) -->
 <section class="identity-section fade-section">
 <h2>What I Do</h2>
 <div class="identity-grid">
@@ -250,8 +254,8 @@
 </div>
 </section>
 
-<!-- Featured Work -->
-<section class="content-section">
+<!-- Featured Work (even less top padding) -->
+<section class="content-section" style="padding-top: 20px !important;">
 <h2 style="text-align:center;">Featured Work</h2>
 <div class="featured-grid">
 <div class="feature-card">
@@ -280,7 +284,7 @@
 </div>
 </section>
 
-<!-- Newsletter Bar -->
+<!-- Newsletter -->
 <section class="newsletter-bar">
 <h3>Stay Inspired</h3>
 <p>Join my mailing list for updates on new books, public health insights, and creative reflections.</p>
