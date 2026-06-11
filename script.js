@@ -190,6 +190,16 @@ document.addEventListener("DOMContentLoaded", function () {
         .split("/")
         .pop();
 
+    // Map old filenames to new ones if needed
+    let activePage = currentPage;
+    if (activePage === "publications.html") {
+        activePage = "research.html";
+    }
+    if (activePage === "journal.html") {
+        // journal no longer exists; fallback to writing or ignore
+        activePage = "writing.html";
+    }
+
     navLinks.forEach(link => {
 
         const href =
@@ -197,14 +207,22 @@ document.addEventListener("DOMContentLoaded", function () {
 
         if (!href) return;
 
-        if (
-            href.includes(currentPage)
-        ) {
+        // Extract the filename from href
+        let hrefFile = href.split("/").pop();
+        if (hrefFile === "publications.html") {
+            hrefFile = "research.html";
+        }
+        if (hrefFile === "journal.html") {
+            hrefFile = "writing.html";
+        }
+
+        if (hrefFile === activePage) {
             link.classList.add("active");
         }
 
+        // Special case for home page
         if (
-            currentPage === "" &&
+            (currentPage === "" || currentPage === "index.html") &&
             href.includes("index.html")
         ) {
             link.classList.add("active");
