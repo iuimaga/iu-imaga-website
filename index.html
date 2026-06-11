@@ -45,8 +45,8 @@
     background: #002147;
     color: white;
     text-align: center;
-    padding: 3rem 2rem;
-    margin: 1rem 0 0;
+    padding: 2.5rem 2rem;
+    margin: 0 0 0 0; /* removed top/bottom margins */
   }
   .quote-text {
     font-size: 1.8rem;
@@ -59,6 +59,14 @@
   .quote-author {
     font-size: 1rem;
     color: #c8a951;
+  }
+  .identity-section {
+    padding-top: 40px !important; /* reduced from 60px */
+    margin-top: 0 !important;
+  }
+  .content-section {
+    padding-top: 60px;
+    padding-bottom: 60px;
   }
   .featured-grid {
     display: grid;
@@ -108,7 +116,7 @@
     background: linear-gradient(135deg, #00152d 0%, #002147 100%);
     padding: 3rem 2rem;
     text-align: center;
-    margin: 2rem 0;
+    margin: 1rem 0;
   }
   .newsletter-bar h3 {
     color: #c8a951;
@@ -164,7 +172,7 @@
 </head>
 <body>
 
-<!-- Navigation -->
+<!-- Navigation (unchanged) -->
 <nav>
 <div class="logo">
 <img src="images/isaiah-logo1.png" alt="IU Logo" class="logo-icon">
@@ -223,7 +231,7 @@
 </div>
 </section>
 
-<!-- Rotating Quotes -->
+<!-- Rotating Quotes (reduced padding/margin) -->
 <section class="rotating-quote">
 <div id="quote-container">
 <div class="quote-text" id="quote-text">"I believe meaningful change happens when knowledge, service, and enterprise work together."</div>
@@ -231,8 +239,8 @@
 </div>
 </section>
 
-<!-- What I Do -->
-<section class="identity-section fade-section" style="padding-top: 60px;">
+<!-- What I Do (tightened top padding) -->
+<section class="identity-section fade-section">
 <h2>What I Do</h2>
 <div class="identity-grid">
 <div class="identity-card"><h3>The Scientist</h3><p>Medical Laboratory Scientist and Public Health Professional focused on diagnostics, epidemiology, research, and health systems strengthening.</p></div>
@@ -272,7 +280,7 @@
 </div>
 </section>
 
-<!-- NEWSLETTER SIGNUP BAR -->
+<!-- Newsletter Bar -->
 <section class="newsletter-bar">
 <h3>Stay Inspired</h3>
 <p>Join my mailing list for updates on new books, public health insights, and creative reflections.</p>
