@@ -1,13 +1,13 @@
-// ==============================
-// IU IMAGA WEBSITE SCRIPT
-// Premium Version
-// ==============================
+// ======================================
+// IU IMAGA WEBSITE
+// Premium Script
+// ======================================
 
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener("DOMContentLoaded", function () {
 
-    // ==========================
+    // ======================================
     // HERO SLIDESHOW
-    // ==========================
+    // ======================================
 
     const slides = document.querySelectorAll(".hero-slide");
 
@@ -15,7 +15,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
         let currentSlide = 0;
 
-        function changeSlide() {
+        slides[0].classList.add("active");
+
+        setInterval(() => {
 
             slides[currentSlide].classList.remove("active");
 
@@ -26,21 +28,20 @@ document.addEventListener("DOMContentLoaded", () => {
             }
 
             slides[currentSlide].classList.add("active");
-        }
 
-        setInterval(changeSlide, 5000);
+        }, 6000);
     }
 
-    // ==========================
+    // ======================================
     // MOBILE MENU
-    // ==========================
+    // ======================================
 
     const menuToggle = document.querySelector(".menu-toggle");
     const navMenu = document.querySelector("nav ul");
 
     if (menuToggle && navMenu) {
 
-        menuToggle.addEventListener("click", () => {
+        menuToggle.addEventListener("click", function () {
 
             navMenu.classList.toggle("active");
 
@@ -54,95 +55,99 @@ document.addEventListener("DOMContentLoaded", () => {
 
     }
 
-    // ==========================
+    // ======================================
     // CLOSE MENU AFTER CLICK
-    // ==========================
+    // ======================================
 
-    const navLinks = document.querySelectorAll("nav ul li a");
+    const navLinks = document.querySelectorAll("nav a");
 
     navLinks.forEach(link => {
 
         link.addEventListener("click", () => {
 
-            if (window.innerWidth <= 900) {
+            if (window.innerWidth <= 900 && navMenu) {
 
                 navMenu.classList.remove("active");
 
                 if (menuToggle) {
                     menuToggle.innerHTML = "&#9776;";
                 }
-
             }
 
         });
 
     });
 
-    // ==========================
-    // STICKY NAV SHADOW
-    // ==========================
+    // ======================================
+    // STICKY NAV EFFECT
+    // ======================================
 
     const nav = document.querySelector("nav");
 
-    window.addEventListener("scroll", () => {
+    if (nav) {
 
-        if (window.scrollY > 50) {
+        window.addEventListener("scroll", () => {
 
-            nav.style.boxShadow =
-                "0 5px 25px rgba(0,0,0,0.25)";
+            if (window.scrollY > 50) {
 
-            nav.style.background =
-                "rgba(0,33,71,0.96)";
+                nav.style.background =
+                    "rgba(0,33,71,0.98)";
 
-        } else {
+                nav.style.boxShadow =
+                    "0 8px 25px rgba(0,0,0,0.20)";
 
-            nav.style.boxShadow = "none";
+            } else {
 
-            nav.style.background =
-                "rgba(0,33,71,0.92)";
-        }
+                nav.style.background =
+                    "rgba(0,33,71,0.95)";
 
-    });
-
-    // ==========================
-    // SCROLL REVEAL ANIMATION
-    // ==========================
-
-    const revealElements = document.querySelectorAll(
-        ".section, .content-section, .identity-card, .venture-item, .writing-card, .publication-card, .contact-card"
-    );
-
-    revealElements.forEach(el => {
-
-        el.style.opacity = "0";
-        el.style.transform = "translateY(40px)";
-        el.style.transition =
-            "all 0.8s ease";
-
-    });
-
-    function revealOnScroll() {
-
-        revealElements.forEach(el => {
-
-            const windowHeight =
-                window.innerHeight;
-
-            const elementTop =
-                el.getBoundingClientRect().top;
-
-            const revealPoint = 120;
-
-            if (elementTop < windowHeight - revealPoint) {
-
-                el.style.opacity = "1";
-                el.style.transform =
-                    "translateY(0)";
+                nav.style.boxShadow =
+                    "none";
             }
 
         });
 
     }
+
+    // ======================================
+    // SCROLL REVEAL
+    // ======================================
+
+    const revealElements = document.querySelectorAll(
+        ".section, .content-section, .identity-card, .venture-item, .writing-card, .publication-card, .contact-card, .quick-links, .gallery-grid"
+    );
+
+    const revealOnScroll = () => {
+
+        revealElements.forEach(element => {
+
+            const windowHeight =
+                window.innerHeight;
+
+            const elementTop =
+                element.getBoundingClientRect().top;
+
+            const revealPoint = 120;
+
+            if (elementTop < windowHeight - revealPoint) {
+
+                element.style.opacity = "1";
+                element.style.transform = "translateY(0)";
+
+            }
+
+        });
+
+    };
+
+    revealElements.forEach(element => {
+
+        element.style.opacity = "0";
+        element.style.transform = "translateY(40px)";
+        element.style.transition =
+            "all 0.8s ease";
+
+    });
 
     window.addEventListener(
         "scroll",
@@ -151,9 +156,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
     revealOnScroll();
 
-    // ==========================
-    // HERO TEXT FADE-IN
-    // ==========================
+    // ======================================
+    // HERO CONTENT ANIMATION
+    // ======================================
 
     const heroContent =
         document.querySelector(".hero-content");
@@ -172,54 +177,52 @@ document.addEventListener("DOMContentLoaded", () => {
             heroContent.style.transform =
                 "translateY(0)";
 
-        }, 400);
+        }, 300);
 
     }
 
-    // ==========================
-    // IMAGE HOVER SMOOTHNESS
-    // ==========================
-
-    const galleryImages =
-        document.querySelectorAll(".gallery-grid img");
-
-    galleryImages.forEach(img => {
-
-        img.addEventListener("mouseenter", () => {
-
-            img.style.transition =
-                "all 0.5s ease";
-
-        });
-
-    });
-
-    // ==========================
+    // ======================================
     // ACTIVE PAGE HIGHLIGHT
-    // ==========================
+    // ======================================
 
     const currentPage =
-        window.location.pathname.split("/").pop();
+        window.location.pathname
+        .split("/")
+        .pop();
 
     navLinks.forEach(link => {
 
         const href =
             link.getAttribute("href");
 
+        if (!href) return;
+
         if (
-            href &&
-            (
-                href.endsWith(currentPage) ||
-                (
-                    currentPage === "" &&
-                    href.includes("index.html")
-                )
-            )
+            href.includes(currentPage)
         ) {
-
-            link.style.color = "#c8a951";
-
+            link.classList.add("active");
         }
+
+        if (
+            currentPage === "" &&
+            href.includes("index.html")
+        ) {
+            link.classList.add("active");
+        }
+
+    });
+
+    // ======================================
+    // GALLERY IMAGE EFFECTS
+    // ======================================
+
+    const galleryImages =
+        document.querySelectorAll(".gallery-grid img");
+
+    galleryImages.forEach(img => {
+
+        img.style.transition =
+            "all 0.5s ease";
 
     });
 
